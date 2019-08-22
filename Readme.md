@@ -1,0 +1,30 @@
+# PROBLEM 11
+## AutoComplete Text
+In this problem I have used trie data structures which stores all the words in dictionary forming a trie which makes
+check for a valid word faster and memory efficient as well. I have not used a hashmap to look up for valid word because
+it takes a lot of memory even for similar words and also have to traverse non-similar words as well.
+
+<br>
+
+### Algorithm:
+1. Create a Trie for all the words in Dictionary
+2. Get the prefix from user for which we want to predict Possible Suffix.
+3. Find the node represents the given prefix in our Trie
+    • For each char in prefix if that char is present in current node then make to children of current node as current node and search in them
+    • when all characters are traversed for given prefix return the current node
+4. Now we need to find all the valid words from current node returned from Prefix
+    • if current_node is a valid word then add the suffix to array of sufix
+    • Otherwise for each children of current node recursively call the same method for each children also add character of that node in suffix
+    • return Array of all suffix
+
+
+### Time Complexity Analysis:
+    • insert() : O(length of word)
+    • find()   : O(length of prefix)
+    • suffix() : O(B*D) where B=Branching Factor ie. Max No of children of any Node from Current Node
+                              D=Depth ie. Maximum Depth of Trie from Current Node.
+
+
+### Space Complexity Analysis:
+• Trie : O(B*D) where B=Branching Factor ie. Max No of children of any Node from Current Node
+                          D=Depth ie. Maximum Depth of Trie from Current Node.
